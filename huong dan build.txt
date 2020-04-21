@@ -1,0 +1,15 @@
+1. ng build --prod ( -> mặc định build vào thư mục dist.)
+2. Thiết lập đường dẫn build để upload lên firebase host là : firebase.json
+3. upload lên host firbase : firebase deploy
+4. Chạy local host: firebas serve ( tìm đến thưc mục được thiết lập trong firebas.json.)
+
+// khi đã có kho - sau khi xong phải khai báo lại domain
+git init
+git add .
+git commit -m "v1"
+git remote add origin https://github.com/tungocvan/nguyenthidinh.git
+nếu lỗi git remote set-url origin https://github.com/tungocvan/nguyenthidinh.git
+git status // kiểm tra lại đúng kho cần upload không
+git push origin master --force
+
+https://www.textfixer.com/tools/paragraph-to-lines.php
