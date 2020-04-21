@@ -1,12 +1,12 @@
 // const urlProduct='http://localhost/wp532/getproductjson/';
 // const urlPost='http://localhost/wp532/getpostjson/';
 // const urlWp='http://localhost/wp532/apiwp/';
-const urlSentMail= 'http://localhost/giaodien/contact/';
+// const urlSentMail= 'http://localhost/giaodien/contact/';
 //this.includeJS('initFirebase.js');
 // const urlProduct='https://vinut.maigia.vn/getproductjson/';
-// const urlPost='https://vinut.maigia.vn/getpostjson/';
-// const urlSentMail='https://vinut.maigia.vn/contact/';
-const urlWp='http://vinut.maigia.vn/apiwp/';
+// const urlPost='https://vinut.maigia.vn/getpostjson/'; 
+const urlSentMail='https://vinut.maigia.vn/contact/';
+const urlWp='https://vinut.maigia.vn/apiwp/';
 
 var user ={
     name:'',
