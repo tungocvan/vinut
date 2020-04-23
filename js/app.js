@@ -198,7 +198,7 @@ function loadProduct(item) {
             <!--Btn-->
             <div class="mbr-section-btn align-center">
                 <a href="product-detail.html#${item.slug}" class="btn btn-warning-outline display-4">
-                    Liên hệ 
+                    ${item.price} 
                 </a>
             </div>
         </div>
@@ -226,7 +226,7 @@ function loadProductSlider(item) {
             <!--Btn-->
             <div class="mbr-section-btn align-left">
                 <a href="product-detail.html#${item.slug}" class="btn btn-warning-outline display-4">
-                    Liên hệ 
+                   ${item.price}
                 </a>
             </div>
         </div>
