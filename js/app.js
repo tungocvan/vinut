@@ -250,7 +250,7 @@ function loadProductDetail(item) {
                 
             </div>
             <!--Btn-->
-            <div class="mbr-section-btn pt-3 align-left"><a href="index.html" class="btn btn-warning-outline display-4">Liên hệ</a></div>
+            <div class="mbr-section-btn pt-3 align-left"><a href="index.html" class="btn btn-warning-outline display-4">${item.price}</a></div>
         </div>
     </div>
 </div>
