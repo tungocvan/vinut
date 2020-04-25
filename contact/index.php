@@ -26,6 +26,7 @@ if ($_POST){
     //@important: Please change this before using
     http_response_code(200);
     // require "sendmail.php";
+    $adminEmail = $_POST['adminEmail'];
     $now = getdate();
     $currentDate = $now["mday"] . ".". $now["mon"] . ".". $now["year"];
     $currentTime = $now["hours"] . ":". $now["minutes"] . ":". $now["seconds"];
