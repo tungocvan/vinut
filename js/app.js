@@ -12,7 +12,8 @@ var user ={
     name:'Van',
     phone:'',
     email:'',
-    message:''
+    message:'',
+    adminEmail:''
 }
 var error = [];
 var productData = [];
@@ -628,14 +629,18 @@ function videoHome(itemsPost) {
         <div>             
             <iframe width="910" height="720" src="${urlVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-    </div>
+    </div>  
     </figure>
     
     `;
-    document.getElementById('video2-r').innerHTML = xhtml;
+    if(urlVideo !==""){
+        document.getElementById('video2-r').innerHTML = xhtml;
+    }
+    
 }
 function contactHome(itemsPost) {
-    let items = this.filterPost(itemsPost,'contact');
+    let items = this.filterPost(itemsPost,'contact');   
+    
     console.log("contact:",items);
     let xhtml=`
     <div class="container">
@@ -689,6 +694,9 @@ function loadPageBlogs(itemsPost) {
 }
 function sentMail(user) 
 {
+    let adminEmail = document.getElementById('contact').innerHTML;
+    user.adminEmail = adminEmail;
+    // console.log('adminEmail',adminEmail);
     axios({
         method: "post",
         url: urlSentMail,
