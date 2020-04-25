@@ -1,15 +1,15 @@
 // const urlProduct='http://localhost/wp532/getproductjson/';
 // const urlPost='http://localhost/wp532/getpostjson/';
 // const urlWp='http://localhost/wp532/apiwp/';
-// const urlSentMail= 'http://localhost/giaodien/contact/';
+//const urlSentMail= 'http://localhost/giaodien/contact/';
 //this.includeJS('initFirebase.js');
 // const urlProduct='https://vinut.maigia.vn/getproductjson/';
-// const urlPost='https://vinut.maigia.vn/getpostjson/'; 
+// const urlPost='https://vinut.maigia.vn/getpostjson/';
 const urlSentMail='https://vinut.maigia.vn/contact/';
 const urlWp='https://vinut.maigia.vn/apiwp/';
 
 var user ={
-    name:'',
+    name:'Van',
     phone:'',
     email:'',
     message:''
@@ -121,7 +121,7 @@ async function asyncFunc(url) {
         return result.data ;
       })  
     return data;
-  }
+}
 
 
 function loadDataWp(){
@@ -144,7 +144,7 @@ function loadDataWp(){
 function loadTemplate(data) {    
     if(data){
         this.menuData = data[0][0]['menu-primary'];
-        itemsPost = data[0][1]['post'];
+        itemsPost = data[0][1]['post'];itemsPost
         itemsProduct = data[0][2]['product'];
         document.getElementById('header').innerHTML = this.loadHeader();
         document.getElementById('footer6-2g').innerHTML = this.loadFooter();    
@@ -186,10 +186,10 @@ function loadProduct(item) {
     <div class="card col-12 col-md-6 p-3 col-lg-3">
     <div class="card-wrapper">
         <div class="card-img">
-            <a href="product-detail.html#${item.slug}"><img src="${item.img}" alt="Mobirise" title=""></a>
+            <a href="product-detail.html#${item.slug}"><img style="height:260px;width:260px" src="${item.img}" alt="Mobirise" title="${item.title}"></a>
         </div>
         <div class="card-box">
-            <h4 class="card-title mbr-fonts-style display-5">
+            <h4 style="min-height:90px" class="card-title mbr-fonts-style display-5">
             ${item.title} 
             </h4>
             <p class="mbr-text mbr-fonts-style display-7">
@@ -198,7 +198,7 @@ function loadProduct(item) {
             <!--Btn-->
             <div class="mbr-section-btn align-center">
                 <a href="product-detail.html#${item.slug}" class="btn btn-warning-outline display-4">
-                    ${item.price} 
+                ${item.price} 
                 </a>
             </div>
         </div>
@@ -226,7 +226,7 @@ function loadProductSlider(item) {
             <!--Btn-->
             <div class="mbr-section-btn align-left">
                 <a href="product-detail.html#${item.slug}" class="btn btn-warning-outline display-4">
-                   ${item.price}
+                    Liên hệ 
                 </a>
             </div>
         </div>
@@ -439,6 +439,9 @@ function loadPostSlider(item) {
 }
 
 function loadPostDetail(item) {
+    console.log('item post:',item);
+    
+    let urlFace = `${item.link}`;
     return `
     <section class="mbr-section content4 cid-rWtMbGXphM" id="content4-2f" style="padding-bottom: 0px!important;">
     <div class="container">
@@ -449,8 +452,8 @@ function loadPostDetail(item) {
     </h2>
     <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
     ${item.the_date}
+    <div class="fb-like" data-href="${urlFace}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>    
     </h3>
-
     </div>
     </div>
     </div>
@@ -649,6 +652,7 @@ function contactHome(itemsPost) {
     document.getElementById('form4-s').innerHTML = xhtml;
 }
 function loadPageHome(itemsProduct,itemsPost) {
+    this.addMeta('name','author','Từ Ngọc Vân');
     this.sliderHome(itemsPost);
     this.gcnHome(itemsPost);
     this.videoHome(itemsPost);
@@ -679,7 +683,8 @@ function loadPageBlogs(itemsPost) {
   //  console.log('blogs.html');
     let slug_post = window.location.hash.replace("#","");
     itemsPost = itemsPost.find(value => value['slug'] === slug_post );
-  //  console.log('itemsPost:',itemsPost);           
+    console.log('itemsPost:',itemsPost);        
+    this.addPostMeta(itemsPost);
     document.getElementById('blogs').innerHTML = this.loadPostDetail(itemsPost);
 }
 function sentMail(user) 
@@ -700,4 +705,21 @@ function sentMail(user)
             }            
         })
         .catch(error => console.log('error',error) );    
+}
+
+
+function addMeta(attrib,valueAttrib,valueContent) {
+    var meta = document.createElement('meta');
+    meta.setAttribute(attrib, valueAttrib);
+    meta.content = valueContent;
+    document.getElementsByTagName('head')[0].appendChild(meta);    
+}
+
+function addPostMeta(item) {
+    let slug = 'https://azshopweb.com/blogs.html#'+ item.slug;
+    this.addMeta('property','og:url',slug);
+    this.addMeta('property','og:type','article');
+    this.addMeta('property','og:title',item.title);
+    this.addMeta('property','og:description',item.short_content);
+    this.addMeta('property','og:image',item.img);
 }
